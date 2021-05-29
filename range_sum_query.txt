@@ -1,0 +1,18 @@
+//range sum query
+//M1 --for(i=start to end){ find sum}---O(n)
+//M2---maintain consecutive sum array ---queries---O(1)
+
+ int range_sum_query(vector<int> arr, int start,int end) {
+        int n=arr.size();
+        vector<int> consecutive_sum;
+        for(int i=0;i<n;i++){
+            consecutive_sum.push_back(arr[i]);
+        }
+        for(int i=1;i<n;i++){
+            consecutive_sum[i]+=consecutive_sum[i-1];
+        }
+        if(start==0){
+            return consecutive_sum[end];
+        }
+        return consecutive_sum[end]-consecutive_sum[start-1];
+ }
