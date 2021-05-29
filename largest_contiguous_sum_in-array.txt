@@ -1,0 +1,14 @@
+//A subarray is a part of an array including one or more contiguous/adjacent elements
+//M1-- O(n^2)---for(i=0-n;i++) {sum=0; {for(j=i-n;j++) sum+=arr[i]; res=max(res, sum);} } return res;
+//M2-- kadane algo--O(n)
+int largestContiguousSum(vector <int> &arr){
+    int n=arr.size();
+	int res=arr[0];
+	int cons_sum=arr[0];
+	for(int i=1;i<n;i++){
+		cons_sum=max(cons_sum+ arr[i], arr[i]);
+		res=max(res, cons_sum);
+	}
+	return res;
+}
+
