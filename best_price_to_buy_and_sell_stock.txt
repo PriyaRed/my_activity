@@ -1,0 +1,23 @@
+//best time to buy and sell stock
+//You are given an array prices where prices[i] is the price of a given stock on the ith day.
+//You want to maximize your profit by choosing a single day to buy one stock and choosing a different //day in the future to sell that stock.
+
+//M1- buy whenever value is less and sell if value next is lower, update result--O(n)
+
+int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int buy=prices[0],result=0;
+        int sell;
+        for(int i=1;i<n;i++){
+            if(prices[i] < buy){
+                buy=prices[i];
+            }
+            else if(prices[i] > buy)
+                sell=prices[i];
+                result=max(result, sell- buy);
+            }
+        }
+    return result;
+}
+
+
