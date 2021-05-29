@@ -1,0 +1,38 @@
+//METHOD 1- inbuilt sort method -- implement sort and find---O(nlogn)
+
+int getKthSmallestElement(vector<int> list, int k) {
+	int n=list.size();
+	sort(list.begin(), list.end());
+	return list[k-1];
+}
+
+//METHOD 2 ---using max_heap---O(nlogk)
+
+int getKthSmallestElement(vector<int> list, int k) {
+	int n=list.size();
+	priority_queue<int> maxheap;
+	for(int i=0;i<k;i++){
+		maxheap.push(list[i]);
+	}
+	for(int i=k;i<n;i++){
+		if(list[i] < maxheap.top()){
+			maxheap.pop();
+			maxheap.push(list[i]);
+		}
+	}
+	return maxheap.top();
+}
+
+//METHOD 3---using  min heap---O(nlogn)
+int getKthSmallestElement(vector<int> list, int k) {
+    // add your logic here
+	int n=list.size();
+	priority_queue<int,vector<int>, greater<int> > minheap;
+	for(int i=0;i<n;i++){
+		minheap.push(list[i]);
+	}
+	for(int i=0;i<k-1;i++){
+		minheap.pop();
+	}
+	return minheap.top();
+}
