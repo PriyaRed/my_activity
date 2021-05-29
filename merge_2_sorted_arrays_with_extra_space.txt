@@ -1,0 +1,26 @@
+//merge 2 sorted array with extra space
+//M1 ---store all elements of 2 arrays in a single another arry and sort it
+//M2 ---2 pointer approach
+
+vector<int> merge(vector<int> a, vector<int> b){
+	int i=0,j=0;
+	vector<int> c;
+	int k=0;
+	while(i<a.size() && j<b.size() ){
+		if(a[i] < b[j]){
+			c[k++]=a[i++];
+		}
+		else{
+			c[k++]=b[j++];
+		}		
+	}
+	while(i<a.size()){
+		c[k++]=a[i++];
+	}
+	while(j< b.size()){
+		c[k++]=b[j++];
+	}
+	return c;
+}
+
+
